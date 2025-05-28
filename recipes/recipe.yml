@@ -13,21 +13,25 @@ image-version: 42
 # you can include multiple instances of the same module
 modules:
   - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+    files: []
 
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
     install:
-      - micro
       - starship
+      - ghostty
+      - libvirt
+      - setroubleshoot
+      - powertop
+      - lm_sensors
+      - openssh-askpass
     remove:
       # example: removing firefox (in favor of the flatpak)
       # "firefox" is the main package, "firefox-langpacks" is a dependency
-      - firefox
-      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      #- firefox
+      #- firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -35,7 +39,32 @@ modules:
       # If no repo information is specified, Flathub will be used by default
       install:
         - org.mozilla.firefox
-        - org.gnome.Loupe
+        - io.gitlab.librewolf-community
+        - org.chromium.Chromium
+        - com.brave.Browser
+        - org.torproject.torbrowser-launcher
+        - eu.betterbird.Betterbird
+        - org.signal.Signal
+        - org.telegram.desktop
+        - ch.threema.threema-web-desktop
+        - im.riot.Riot
+        - dev.vencord.Vesktop
+        - com.slack.Slack
+        - org.musicbrainz.Picard
+        - org.apache.directory.studio
+        - com.bitwarden.desktop
+        - com.logseq.Logseq
+        - io.freetubeapp.FreeTube
+        - org.gimp.GIMP
+        - org.inkscape.Inkscape
+        - com.jgraph.drawio.desktop
+        - org.libreoffice.LibreOffice
+        - org.openscad.OpenSCAD
+        - com.prusa3d.PrusaSlicer
+        - org.freecad.FreeCAD
+        - edu.mit.Scratch
+        - com.valvesoftware.Steam
+        - com.calibre_ebook.calibre
       remove:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
