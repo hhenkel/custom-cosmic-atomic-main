@@ -67,7 +67,7 @@ modules:
         - edu.mit.Scratch
         - com.valvesoftware.Steam
         - com.calibre_ebook.calibre
-      remove:
+    remove:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
