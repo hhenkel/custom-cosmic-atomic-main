@@ -36,37 +36,38 @@ modules:
       #- firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
   - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished (true/false)
-    scope: system
-    # If no repo information is specified, Flathub will be used by default
-    install:
-        - org.mozilla.firefox
-        - io.gitlab.librewolf-community
-        - org.chromium.Chromium
-        - com.brave.Browser
-        - org.torproject.torbrowser-launcher
-        - eu.betterbird.Betterbird
-        - org.signal.Signal
-        - org.telegram.desktop
-        - ch.threema.threema-web-desktop
-        - im.riot.Riot
-        - dev.vencord.Vesktop
-        - com.slack.Slack
-        - org.musicbrainz.Picard
-        - org.apache.directory.studio
-        - com.bitwarden.desktop
-        - com.logseq.Logseq
-        - io.freetubeapp.FreeTube
-        - org.gimp.GIMP
-        - org.inkscape.Inkscape
-        - com.jgraph.drawio.desktop
-        - org.libreoffice.LibreOffice
-        - org.openscad.OpenSCAD
-        - com.prusa3d.PrusaSlicer
-        - org.freecad.FreeCAD
-        - edu.mit.Scratch
-        - com.valvesoftware.Steam
-        - com.calibre_ebook.calibre
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished (true/false)
+        scope: system
+        # If no repo information is specified, Flathub will be used by default
+        install:
+            - org.mozilla.firefox
+            - io.gitlab.librewolf-community
+            - org.chromium.Chromium
+            - com.brave.Browser
+            - org.torproject.torbrowser-launcher
+            - eu.betterbird.Betterbird
+            - org.signal.Signal
+            - org.telegram.desktop
+            - ch.threema.threema-web-desktop
+            - im.riot.Riot
+            - dev.vencord.Vesktop
+            - com.slack.Slack
+            - org.musicbrainz.Picard
+            - org.apache.directory.studio
+            - com.bitwarden.desktop
+            - com.logseq.Logseq
+            - io.freetubeapp.FreeTube
+            - org.gimp.GIMP
+            - org.inkscape.Inkscape
+            - com.jgraph.drawio.desktop
+            - org.libreoffice.LibreOffice
+            - org.openscad.OpenSCAD
+            - com.prusa3d.PrusaSlicer
+            - org.freecad.FreeCAD
+            - edu.mit.Scratch
+            - com.valvesoftware.Steam
+            - com.calibre_ebook.calibre
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
