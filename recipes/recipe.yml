@@ -55,8 +55,6 @@ modules:
       - cosmic-store
       - cosmic-edit
       - cosmic-wallpapers
-      
-      #
       - starship
       - ghostty
       - setroubleshoot
