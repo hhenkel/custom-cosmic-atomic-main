@@ -6,7 +6,7 @@ name: custom-cosmic-atomic-main
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-# base-image: quay.io/fedora-ostree-desktops/cosmic-atomic 
+# base-image: quay.io/fedora-ostree-desktops/cosmic-atomic
 base-image: ghcr.io/ublue-os/base-main
 image-version: 43
 
@@ -26,46 +26,48 @@ modules:
         - terra-nvidia.repo
         - terra.repo
     install:
-      # Cosmic as in Cosmic Fedora 43 atomic image
-      # - fedora-release-identity-cosmic-atomic-43-25.noarch
-      # - fedora-release-cosmic-atomic-43-25.noarch
-      - cosmic-panel
-      - cosmic-randr
-      - cosmic-icon-theme
-      - cosmic-app-library
-      - cosmic-idle
-      - cosmic-notifications
-      - cosmic-term
-      - cosmic-screenshot
-      - cosmic-osd
-      - cosmic-applets
-      - cosmic-launcher
-      - xdg-desktop-portal-cosmic
-      - cosmic-initial-setup
-      - cosmic-files
-      - cosmic-bg
-      - cosmic-comp
-      - cosmic-greeter
-      - cosmic-workspaces
-      - cosmic-settings-daemon
-      - cosmic-settings
-      - cosmic-config-fedora
-      - cosmic-session
-      - cosmic-player
-      - cosmic-store
-      - cosmic-edit
-      - cosmic-wallpapers
-      - starship
-      - ghostty
-      - setroubleshoot
-      - powertop
-      - lm_sensors
-      - openssh-askpass
-      - waydroid
-      - waydroid-selinux
+      packages:
+        # Cosmic as in Cosmic Fedora 43 atomic image
+        # - fedora-release-identity-cosmic-atomic-43-25.noarch
+        # - fedora-release-cosmic-atomic-43-25.noarch
+        - cosmic-panel
+        - cosmic-randr
+        - cosmic-icon-theme
+        - cosmic-app-library
+        - cosmic-idle
+        - cosmic-notifications
+        - cosmic-term
+        - cosmic-screenshot
+        - cosmic-osd
+        - cosmic-applets
+        - cosmic-launcher
+        - xdg-desktop-portal-cosmic
+        - cosmic-initial-setup
+        - cosmic-files
+        - cosmic-bg
+        - cosmic-comp
+        - cosmic-greeter
+        - cosmic-workspaces
+        - cosmic-settings-daemon
+        - cosmic-settings
+        - cosmic-config-fedora
+        - cosmic-session
+        - cosmic-player
+        - cosmic-store
+        - cosmic-edit
+        - cosmic-wallpapers
+        - starship
+        - ghostty
+        - setroubleshoot
+        - powertop
+        - lm_sensors
+        - openssh-askpass
+        - waydroid
+        - waydroid-selinux
     remove:
-      - firefox
-      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      packages:
+        - firefox
+        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
   - type: default-flatpaks
     configurations:
