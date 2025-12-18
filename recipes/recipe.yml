@@ -58,12 +58,25 @@ modules:
         - cosmic-wallpapers
         - starship
         - ghostty
+        - ghostty-bash-completion
+        - ghostty-shell-integration
+        - ghostty-nautilus
+        - ghostty-neovim
         - setroubleshoot
         - powertop
         - lm_sensors
         - openssh-askpass
         - waydroid
         - waydroid-selinux
+        - gvfs
+        - gvfs-afc
+        - gvfs-afp
+        - gvfs-archive
+        - gvfs-goa
+        - gvfs-gphoto2
+        - gvfs-mtp
+        - gvfs-nfs
+        - gvfs-smb
     remove:
       packages:
         - firefox
