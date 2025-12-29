@@ -20,6 +20,8 @@ modules:
 
   - type: dnf
     repos:
+      keys:
+        - https://pkgs.netbird.io/yum/repodata/repomd.xml.key
       files:
         - terra-extras.repo
         - terra-mesa.repo
