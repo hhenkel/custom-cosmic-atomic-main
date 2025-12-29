@@ -25,6 +25,7 @@ modules:
         - terra-mesa.repo
         - terra-nvidia.repo
         - terra.repo
+        - netbird.repo
     install:
       packages:
         # Cosmic as in Cosmic Fedora 43 atomic image
@@ -56,6 +57,7 @@ modules:
         - cosmic-store
         - cosmic-edit
         - cosmic-wallpapers
+        - cutecosmic-qt6
         - starship
         - ghostty
         - ghostty-bash-completion
@@ -77,6 +79,8 @@ modules:
         - gvfs-mtp
         - gvfs-nfs
         - gvfs-smb
+        - netbird
+        - netbird-ui
     remove:
       packages:
         - firefox
