@@ -81,13 +81,16 @@ modules:
         - gvfs-mtp
         - gvfs-nfs
         - gvfs-smb
-        - netbird
-        - netbird-ui
     remove:
       packages:
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
+  - type: rpm-ostree
+    install:
+      - netbird
+      - netbird-ui
+    
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
