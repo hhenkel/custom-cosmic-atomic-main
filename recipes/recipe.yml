@@ -18,6 +18,15 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: brew
+    brew-analytics: false
+    auto-update: true
+    update-interval: 6h
+    update-wait-after-boot: 10m
+    auto-upgrade: true
+    upgrade-interval: 6h
+    upgrade-wait-after-boot: 11m
+
   - type: dnf
     repos:
       keys:
@@ -60,12 +69,13 @@ modules:
         - cosmic-edit
         - cosmic-wallpapers
         - cutecosmic-qt6
-        - starship
-        - ghostty
-        - ghostty-bash-completion
-        - ghostty-shell-integration
-        - ghostty-nautilus
-        - ghostty-neovim
+ # Install via brew
+ #       - starship
+ #       - ghostty
+ #       - ghostty-bash-completion
+ #       - ghostty-shell-integration
+ #       - ghostty-nautilus
+ #       - ghostty-neovim
         - setroubleshoot
         - powertop
         - lm_sensors
