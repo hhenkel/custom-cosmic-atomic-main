@@ -71,10 +71,11 @@ modules:
         - cutecosmic-qt6
  # Install via brew
  #       - starship
- #       - ghostty
- #       - ghostty-bash-completion
- #       - ghostty-shell-integration
- #       - ghostty-nautilus
+        - ghostty
+        - ghostty-bash-completion
+        - ghostty-shell-integration
+        - ghostty-nautilus
+ # Don't install as this will install neovim as a dependency - I'm using neovim from brew
  #       - ghostty-neovim
         - setroubleshoot
         - powertop
