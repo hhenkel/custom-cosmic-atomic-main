@@ -118,7 +118,7 @@ modules:
         - mozc
         - powerstat
         - printer-driver-brlaser
-        - pulseaudio-util
+        - pulseaudio-utils
         - rclone
         - restic
         - samba
@@ -143,7 +143,7 @@ modules:
     install:
       - netbird
       - netbird-ui
-    
+
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
