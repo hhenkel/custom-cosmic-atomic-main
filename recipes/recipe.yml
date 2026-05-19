@@ -92,6 +92,48 @@ modules:
         - gvfs-mtp
         - gvfs-nfs
         - gvfs-smb
+      # Selection of packages from https://github.com/ublue-os/bluefin/blob/5250d601986cbf03089f7e81cf6c6dc321f11b78/build_files/base/04-packages.sh
+        - adcli
+        - autofs
+        - bcache-tools
+        - borgbackup
+        - containerd
+        - cryfs
+        - davfs2
+        - ddcutil
+        - evtest
+        - fastfetch
+        - firewall-config
+        - foo2zjs
+        - fuse-encfs
+        - git-credential-libsecret
+        - glow
+        - gum
+        - hplip
+        - ibus-mozc
+        - ifuse
+        - igt-gpu-tools
+        - input-remapper
+        - krb5-workstation
+        - mozc
+        - powerstat
+        - printer-driver-brlaser
+        - pulseaudio-util
+        - rclone
+        - restic
+        - samba
+        - samba
+        - samba-dcerpc
+        - samba-ldb-ldap-modules
+        - samba-winbind-clients
+        - samba-winbind-modules
+        - setools-console
+        - sssd-nfs-idmap
+        - switcheroo-control
+        - usbip
+        - usbmuxd
+        - wireguard-tools
+        - waypipe
     remove:
       packages:
         - firefox
