@@ -1,0 +1,224 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+# image will be published to ghcr.io/<user>/<name>
+name: custom-cosmic-atomic-main
+# description will be included in the image's metadata
+description: This is my personal OS image.
+
+# the base image to build on top of (FROM) and the version tag to use
+# base-image: quay.io/fedora-ostree-desktops/cosmic-atomic
+base-image: ghcr.io/ublue-os/base-main
+image-version: 44
+
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+  - type: files
+    files:
+      - source: system
+        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
+  - type: brew
+    brew-analytics: false
+    auto-update: true
+    update-interval: 6h
+    update-wait-after-boot: 10m
+    auto-upgrade: true
+    upgrade-interval: 6h
+    upgrade-wait-after-boot: 11m
+
+  - type: dnf
+    repos:
+      keys:
+        - https://pkgs.netbird.io/yum/repodata/repomd.xml.key
+      files:
+        - terra-extras.repo
+        - terra-mesa.repo
+        - terra-nvidia.repo
+        - terra.repo
+        - netbird.repo
+    install:
+      packages:
+        # Cosmic as in Cosmic Fedora 43 atomic image
+        # - fedora-release-identity-cosmic-atomic-43-25.noarch
+        # - fedora-release-cosmic-atomic-43-25.noarch
+        - cosmic-panel
+        - cosmic-randr
+        - cosmic-icon-theme
+        - cosmic-app-library
+        - cosmic-idle
+        - cosmic-notifications
+        - cosmic-term
+        - cosmic-screenshot
+        - cosmic-osd
+        - cosmic-applets
+        - cosmic-launcher
+        - xdg-desktop-portal-cosmic
+        - cosmic-initial-setup
+        - cosmic-files
+        - cosmic-bg
+        - cosmic-comp
+        - cosmic-greeter
+        - cosmic-workspaces
+        - cosmic-settings-daemon
+        - cosmic-settings
+        - cosmic-config-fedora
+        - cosmic-session
+        - cosmic-player
+        - cosmic-store
+        - cosmic-edit
+        - cosmic-wallpapers
+        - cutecosmic-qt6
+ # Install via brew
+ #       - starship
+        - ghostty
+        - ghostty-bash-completion
+        - ghostty-shell-integration
+        - ghostty-nautilus
+ # Don't install as this will install neovim as a dependency - I'm using neovim from brew
+ #       - ghostty-neovim
+        - setroubleshoot
+        - powertop
+        - lm_sensors
+        - openssh-askpass
+        - waydroid
+        - waydroid-selinux
+        - gvfs
+        - gvfs-afc
+        - gvfs-afp
+        - gvfs-archive
+        - gvfs-goa
+        - gvfs-gphoto2
+        - gvfs-mtp
+        - gvfs-nfs
+        - gvfs-smb
+      # Selection of packages from https://github.com/ublue-os/bluefin/blob/5250d601986cbf03089f7e81cf6c6dc321f11b78/build_files/base/04-packages.sh
+        - adcli
+        - autofs
+        - bcache-tools
+        - borgbackup
+        - containerd
+        - cryfs
+        - davfs2
+        - ddcutil
+        - evtest
+        - fastfetch
+        - firewall-config
+        - foo2zjs
+        - fuse-encfs
+        - git-credential-libsecret
+        - glow
+        - gum
+        - hplip
+        - ibus-mozc
+        - ifuse
+        - igt-gpu-tools
+        - input-remapper
+        - krb5-workstation
+        - mozc
+        - powerstat
+        - printer-driver-brlaser
+        - pulseaudio-utils
+        - rclone
+        - restic
+        - samba
+        - samba
+        - samba-dcerpc
+        - samba-ldb-ldap-modules
+        - samba-winbind-clients
+        - samba-winbind-modules
+        - setools-console
+        - sssd-nfs-idmap
+        - switcheroo-control
+        - usbip
+        - usbmuxd
+        - wireguard-tools
+        - waypipe
+    remove:
+      packages:
+        - firefox
+        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+
+  - type: rpm-ostree
+    install:
+      - netbird
+      - netbird-ui
+
+  - type: default-flatpaks
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished (true/false)
+        scope: system
+        # If no repo information is specified, Flathub will be used by default
+        install:
+            # Browser
+            - app.zen_browser.zen
+            - com.brave.Browser
+            - org.chromium.Chromium
+            - org.mozilla.firefox
+            - org.torproject.torbrowser-launcher
+            # - io.gitlab.librewolf-community
+
+            # eMail Clients
+            - eu.betterbird.Betterbird
+            - org.claws_mail.Claws-Mail
+            # - org.mozilla.Thunderbird
+            # - com.ulduzsoft.Birdtray
+
+            # Instant Messagener
+            - ch.threema.threema-web-desktop
+            - org.telegram.desktop
+            - org.signal.Signal
+            - im.riot.Riot
+            - com.slack.Slack
+            - dev.vencord.Vesktop
+            
+            # Password Manager
+            - com.bitwarden.desktop
+            - org.keepassxc.KeePassXC
+            - org.pwsafe.pwsafe
+
+            # CAD / 3d printing
+            - com.prusa3d.PrusaSlicer
+            - org.openscad.OpenSCAD
+            - org.freecad.FreeCAD
+
+            # Graphics / Pictures
+            - com.jgraph.drawio.desktop
+            - org.inkscape.Inkscape
+            - org.gimp.GIMP
+
+            # Music
+            - org.musicbrainz.Picard
+
+            # Gaming
+            - com.valvesoftware.Steam
+
+            # Video
+            - io.freetubeapp.FreeTube
+            - app.grayjay.Grayjay
+            - io.mpv.Mpv
+            - org.videolan.VLC
+
+            # Programming / Tech stuff
+            - edu.mit.Scratch
+            - io.github.Omniaevo.mqtt5-explorer
+            - org.apache.directory.studio
+            - org.meshtastic.meshtasticd
+            
+            # Office stuff
+            - org.libreoffice.LibreOffice
+            - com.calibre_ebook.calibre
+            - com.logseq.Logseq
+            - com.github.unrud.djpdf
+            - com.github.unrud.djpdf.OCR.Ara
+            - com.github.unrud.djpdf.OCR.ChiSim
+            - com.github.unrud.djpdf.OCR.Deu
+            - com.github.unrud.djpdf.OCR.Fra
+            - com.github.unrud.djpdf.OCR.Hin
+            - com.github.unrud.djpdf.OCR.Jpn
+            - com.github.unrud.djpdf.OCR.Por
+            - com.github.unrud.djpdf.OCR.Rus
+            - com.github.unrud.djpdf.OCR.Spa
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
